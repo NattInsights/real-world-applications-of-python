@@ -37,9 +37,21 @@ def employee(**info):
 def sale(product, price, quantity=1, discount=0):
     final_transaction = price - (price * discount) * quantity
     return f"{product}: \nTotal amount - £{final_transaction:.2f}"
-print(sale(
+"""print(sale(
     product="Asus Zenbook A14",
     price=899,
     discount=0.30
-    ))
+    ))"""
+
+# 08 - CUSTOMER ACCOUNT
+def create_customer(country="UK", active=True, **customer_info):
+    defaults = {"Country": country, "Active": active}
+    combined = {**defaults, customer_info}
+    return combined
+print(create_customer(
+    name="Levy",
+    age=32,
+))
+# still working on piecing together the kwargs and regular default arguments
+# attempting to make them a dictionary and return it altogther
 
