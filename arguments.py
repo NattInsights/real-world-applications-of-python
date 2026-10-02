@@ -57,17 +57,13 @@ def create_customer(country="UK", active=True, **customer_info):
 
 # 09 - CALCULATE AVERAGE SCORES
 def average_scores(*scores):
-    res = 0
-    for i in scores:
-        res += i
+    res = sum(scores)
     return res / len(scores)
 #print(average_scores(1, 1, 1, 1, 1))
 
 # 10 - SHOPPING BASKET
 def basket_total(*prices):
-    res = 0
-    for i in prices:
-        res += i
+    res = sum(prices)
     return res
 #print(basket_total(20, 5, 5, 10))
 
@@ -108,6 +104,22 @@ def sales_report(*sales, **options):
     # instead of the above
 
     currency = currencies[options.get("currency", "")]
-    
+
     return f"Total: {currency}{total:.2f} \n Average: {currency}{avg:.2f}"
-print(sales_report(100, 100, tax=0.2, currency="EUR"))
+#print(sales_report(100, 100, tax=0.2, currency="USD"))
+
+# - DATA SUMMARY FUNCTION
+def summarise_data(*values, **options):
+    smallest = 0
+    largest = 0
+    avg = 0
+    # still working on fixing this function
+    if options.get("minumum") == True:
+        smallest = min(values)
+    if options.get("maximum") == True:
+        largest = max(values)
+    if options.get("average") == True:
+        total = sum(values)
+        avg = total / len(values)
+    return f"Min: {smallest}, Max: {largest}, Average: {avg}"
+print(summarise_data(5, 5, 10, 20, minimum=True, maximum=False, average=True))
