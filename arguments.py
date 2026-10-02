@@ -46,12 +46,68 @@ def sale(product, price, quantity=1, discount=0):
 # 08 - CUSTOMER ACCOUNT
 def create_customer(country="UK", active=True, **customer_info):
     defaults = {"Country": country, "Active": active}
-    combined = {**defaults, customer_info}
+    combined = {**defaults, **customer_info}
     return combined
-print(create_customer(
-    name="Levy",
-    age=32,
-))
-# still working on piecing together the kwargs and regular default arguments
-# attempting to make them a dictionary and return it altogther
+"""print(create_customer(
+    name="Henry",
+    age=19,
+    country="Poland",
+    active=True
+))"""
 
+# 09 - CALCULATE AVERAGE SCORES
+def average_scores(*scores):
+    res = 0
+    for i in scores:
+        res += i
+    return res / len(scores)
+#print(average_scores(1, 1, 1, 1, 1))
+
+# 10 - SHOPPING BASKET
+def basket_total(*prices):
+    res = 0
+    for i in prices:
+        res += i
+    return res
+#print(basket_total(20, 5, 5, 10))
+
+# 11 - CALCULATE TOTAL REVENUE
+def total_revenue(*sales):
+    res = 0
+    for x in sales:
+        res += x
+    return res
+#print(total_revenue(10, 20, 30, 40, 50))
+
+# 12 - FIND HIGHEST TRANSACTION
+def largest_transaction(*transaction):
+    return max(transaction)
+#print(largest_transaction(220, 350, 400, 120, 55))
+
+# 13 - SALES REPORT
+def sales_report(*sales, **options):
+    total = sum(sales) # initial sales total without tax
+
+    # handling tax in options
+    """if "tax" in options:
+        total += (total * options["tax"])"""
+    # instead of the above
+    tax = options.get("tax", 0)
+    total += total * options["tax"]
+
+    avg = total / len(sales) # avergae total sales
+
+    # handle currencies, providing currency code and associating with symbol
+    currencies = {"GBP": "£",
+                "USD": "$",
+                "CAD": "$",
+                "EUR": "€"}
+    """if "currency" in options:
+        if options["currency"] in currencies:
+            currency = currencies[options["currency"]]"""
+    # instead of the above
+
+    currency = currencies[options.get("currency", "")]
+    
+    return f"Total: {currency}{total:.2f} \n Average: {currency}{avg:.2f}"
+print(sales_report(100, 100, tax=0.2, currency="EUR"))
