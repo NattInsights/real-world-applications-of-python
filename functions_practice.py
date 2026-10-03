@@ -139,3 +139,32 @@ def summarise_data(*values, **options):
 #data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=False)
 #print(data_summary)
 
+# 15 - E-COMMERCE ORDER PROCESSOR
+def process_order(product, price, *extras, discount=0, **customer_details):
+    total = price - (price * discount)
+
+    # customer details display
+    for key, value in customer_details.items():
+        if key == "premium":
+            customer_info = f"{key.capitalize()}\n"
+        else:
+            customer_info = f"{key}: {value}\n"
+
+    # order details
+    order_details = f"{product}: {total}\n"
+    # extra details about product
+    extra_details = [x for x in extras]
+
+    # entire order
+    order_summary = f"{customer_info}\n {order_details} ({extra_details})"
+    return order_summary
+print(process_order(
+    "Laptop",
+    1000,
+    "Mouse",
+    "Keyboard",
+    discount=0.10,
+    customer="Nathan",
+    country="UK",
+    premium=True
+))
