@@ -129,10 +129,13 @@ def summarise_data(*values, **options):
 
     # formatting for concise readability
     format_res = ""
-    for key, value in res.items():
-        format_res += f"{key}: {value}\n"
+    if len(res.items()) == 0:
+        format_res = "No metrics requested currently."
+    else:
+        for key, value in res.items():
+            format_res += f"{key}: {value}\n"
 
     return format_res
 
-data_summary = summarise_data(5, 10, 20, minimum=False, maximum=False, average=True)
+data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=False)
 print(data_summary)
