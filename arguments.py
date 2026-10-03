@@ -113,20 +113,21 @@ def summarise_data(*values, **options):
     smallest = options.get("minimum", False)
     largest = options.get("maximum", False)
     avg = options.get("average", False)
+    res = {}
 
-    # checking if each statistical metric is in options
+    # gradually add to res if metric is needed
+    # if options value is true, calculate metric
     if smallest == True:
         smallest = min(values)
+        res["minimum"] = smallest
     if largest == True:
         largest = max(values)
+        res["maximum"] = largest
     if avg == True:
-        avg = sum(values) / len(values)
-
-    res = {"minimum": smallest,
-           "maximum": largest,
-           "average": avg}
+        avg = round(sum(values) / len(values), 2)
+        res["average"] = avg
 
     return res
 
-data_summary = summarise_data(5, 5, 10, 20, minimum=True, maximum=False, average=True)
+data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=True)
 print(data_summary)
