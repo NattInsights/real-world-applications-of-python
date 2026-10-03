@@ -110,20 +110,23 @@ def sales_report(*sales, **options):
 
 # - DATA SUMMARY FUNCTION
 def summarise_data(*values, **options):
-    smallest = min(values)
-    largest = max(values)
-    avg = sum(values) / len(values)
+    smallest = options.get("minimum", False)
+    largest = options.get("maximum", False)
+    avg = options.get("average", False)
 
     # checking if each statistical metric is in options
-    # creating a generator, so i can yield a value if true
-    # included the formatting within the generator
-    # not sure if the formatting is good practice
-    if "minimum" in options:
-        yield f"Min: {smallest}"
-    if "maximum" in options:
-        yield f"Max: {largest}"
-    if "average" in options:
-        yield f"Avg: {avg}"
+    if smallest == True:
+        smallest = min(values)
+    if largest == True:
+        largest = max(values)
+    if avg == True:
+        avg = sum(values) / len(values)
+
+    res = {"minimum": smallest,
+           "maximum": largest,
+           "average": avg}
+
+    return res
 
 data_summary = summarise_data(5, 5, 10, 20, minimum=True, maximum=False, average=True)
-print(*list(data_summary), sep=", ")
+print(data_summary)
