@@ -127,7 +127,12 @@ def summarise_data(*values, **options):
         avg = round(sum(values) / len(values), 2)
         res["average"] = avg
 
-    return res
+    # formatting for concise readability
+    format_res = ""
+    for key, value in res.items():
+        format_res += f"{key}: {value}\n"
 
-data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=True)
+    return format_res
+
+data_summary = summarise_data(5, 10, 20, minimum=False, maximum=False, average=True)
 print(data_summary)
