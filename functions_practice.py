@@ -144,19 +144,20 @@ def process_order(product, price, *extras, discount=0, **customer_details):
     total = price - (price * discount)
 
     # customer details display
+    customer_info = "Customer details:\n"
     for key, value in customer_details.items():
         if key == "premium":
-            customer_info = f"{key.capitalize()}\n"
+            customer_info += f"{key.capitalize()}\n"
         else:
-            customer_info = f"{key}: {value}\n"
+            customer_info += f"{key.capitalize()} - {value}\n"
 
     # order details
-    order_details = f"{product}: {total}\n"
+    order_details = f"Order details:\n{product} - {total}\n"
     # extra details about product
-    extra_details = [x for x in extras]
+    extra_details = extras
 
     # entire order
-    order_summary = f"{customer_info}\n {order_details} ({extra_details})"
+    order_summary = f"{customer_info}\n{order_details} ({extra_details})"
     return order_summary
 print(process_order(
     "Laptop",
