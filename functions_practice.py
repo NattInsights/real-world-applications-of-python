@@ -108,7 +108,7 @@ def sales_report(*sales, **options):
     return f"Total: {currency}{total:.2f} \n Average: {currency}{avg:.2f}"
 #print(sales_report(100, 100, tax=0.2, currency="USD"))
 
-# - DATA SUMMARY FUNCTION
+# 14 - DATA SUMMARY FUNCTION
 def summarise_data(*values, **options):
     min_request = options.get("minimum", False)
     max_request = options.get("maximum", False)
@@ -136,6 +136,6 @@ def summarise_data(*values, **options):
             format_res += f"{key}: {value}\n"
 
     return format_res
+#data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=False)
+#print(data_summary)
 
-data_summary = summarise_data(5, 10, 20, minimum=True, maximum=False, average=False)
-print(data_summary)
