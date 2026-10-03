@@ -110,22 +110,22 @@ def sales_report(*sales, **options):
 
 # - DATA SUMMARY FUNCTION
 def summarise_data(*values, **options):
-    smallest = options.get("minimum", False)
-    largest = options.get("maximum", False)
-    avg = options.get("average", False)
+    min_request = options.get("minimum", False)
+    max_request = options.get("maximum", False)
+    avg_request = options.get("average", False)
     res = {}
 
     # gradually add to res if metric is needed
     # if options value is true, calculate metric
-    if smallest == True:
-        smallest = min(values)
-        res["minimum"] = smallest
-    if largest == True:
-        largest = max(values)
-        res["maximum"] = largest
-    if avg == True:
-        avg = round(sum(values) / len(values), 2)
-        res["average"] = avg
+    if min_request:
+        min_value = min(values)
+        res["minimum"] = min_value
+    if max_request:
+        max_value = max(values)
+        res["maximum"] = max_value
+    if avg_request:
+        avg_value = round(sum(values) / len(values), 2)
+        res["average"] = avg_value
 
     # formatting for concise readability
     format_res = ""
