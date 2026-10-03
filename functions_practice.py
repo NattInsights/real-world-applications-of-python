@@ -153,11 +153,16 @@ def process_order(product, price, *extras, discount=0, **customer_details):
 
     # order details
     order_details = f"Order details:\n{product} - {total}\n"
+    
     # extra details about product
-    extra_details = extras
+    extra_details = ""
+    if len(extras) > 0:
+        extra_details += ", ".join(extras)
+    else:
+        extra_details = ""
 
     # entire order
-    order_summary = f"{customer_info}\n{order_details} ({extra_details})"
+    order_summary = f"{customer_info}{order_details}({extra_details})"
     return order_summary
 print(process_order(
     "Laptop",
