@@ -6,7 +6,7 @@ def finance(monthly_income):
     short_term_goal = monthly_income * 0.15
     saving = monthly_income * 0.15
 
-    return f"""Essentials: {essentials}\n
+    return f"""Essentials: {essentials}
         Guilt-free: {guilt_free}
         Investing: {investing}
         Short term: {short_term_goal}
