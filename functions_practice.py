@@ -164,7 +164,7 @@ def process_order(product, price, *extras, discount=0, **customer_details):
     # entire order
     order_summary = f"{customer_info}{order_details}({extra_details})"
     return order_summary
-print(process_order(
+"""print(process_order(
     "Laptop",
     1000,
     "Mouse",
@@ -173,35 +173,24 @@ print(process_order(
     customer="Nathan",
     country="UK",
     premium=True
-))
+))"""
 
 # 16 - STUDENT GRADE PROCESSOR
 def process_students(*students, **options):
-    list_students = list(students)
-    """s = round(sum(students[1:]) / len(students[1:]))
-    grades = {"A": s >= 70,
-        "B": s in range(60, 70),
-        "C": s in range(50, 60), 
-        "D": s in range(40, 50),
-        "F": s <= 40 
-    }"""
-    
-    operations = {
-        "average": lambda x: round(sum(x) / len(x), 1),
-        "highest": lambda x: max(x),
-        "highest": lambda x: max(x)
-        #"grade": lambda x: x in grades
+    #student_bank = list(i for i in students)
+    functions = {
+        "average": x for x in list(map(lambda x: round(sum(x[1:]) / len(x[1:])), students))
     }
 
-    result = {
-        name: func(list_students)
-        for name, func in operations.items()
+    results = {
+        name: func(students[1:][1:])
+        for name, func in functions.items()
         if options.get(name, False)
     }
+    """if not results:
+        return "No available grade information available."""
+    return "\n".join(f"{k}: {v}" for k, v in results)
 
-    if not result:
-        return "No grades are out currently."
-    return "\n".join(f"{k}: {v}" for k, v in result.items())
 print(process_students(
     ("Nathan", 72, 81, 68),
     ("Sarah", 91, 84, 88),
