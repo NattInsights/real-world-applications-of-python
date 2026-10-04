@@ -174,3 +174,37 @@ print(process_order(
     country="UK",
     premium=True
 ))
+
+# 16 - STUDENT GRADE PROCESSOR
+def process_students(*students, **options):
+    list_students = list(students)
+    """s = round(sum(students[1:]) / len(students[1:]))
+    grades = {"A": s >= 70,
+        "B": s in range(60, 70),
+        "C": s in range(50, 60), 
+        "D": s in range(40, 50),
+        "F": s <= 40 
+    }"""
+    
+    operations = {
+        "average": lambda x: round(sum(x) / len(x), 1),
+        "highest": lambda x: max(x),
+        "highest": lambda x: max(x)
+        #"grade": lambda x: x in grades
+    }
+
+    result = {
+        name: func(list_students)
+        for name, func in operations.items()
+        if options.get(name, False)
+    }
+
+    if not result:
+        return "No grades are out currently."
+    return "\n".join(f"{k}: {v}" for k, v in result.items())
+print(process_students(
+    ("Nathan", 72, 81, 68),
+    ("Sarah", 91, 84, 88),
+    average=True,
+    grade=True
+))
