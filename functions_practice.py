@@ -177,25 +177,49 @@ def process_order(product, price, *extras, discount=0, **customer_details):
 
 # 16 - STUDENT GRADE PROCESSOR
 def process_students(*students, **options):
+    format = ""
     for student in students:
         (name, *scores) = student
 
-    calculations = {
-        "average": lambda x: round(sum(x) / len(x)),
+        calculations = {
+            "average": lambda x: round(sum(x) / len(x)),
+            "highest": lambda x: max(x),
+            "lowest": lambda x: min(x),
+            "grade": lambda x: get_grade(round(sum(x)/ len(x)))
+        }
 
-    }
+        result = {
+            key: func(scores)
+            for key, func in calculations.items()
+            if options.get(key, False)
+        }
 
-    result = {
-        key: func(scores)
-        for key, func in calculations.items()
-        if options.get(key, False)
-    }
-
-    return "\n".join(f"{name}\n{k}: {v}" for k, v in result.items())
-
-#def get_grade()
+        format += (
+            name 
+            + "\n" 
+            + "\n".join(f"{k}: {v}" for k, v in result.items())
+            + "\n\n"
+        )
+    return format
+def get_grade(score):
+    match score:
+        case n if n >= 70:
+            return ("A")
+        case n if 60 <= n < 70:
+            return ("B")
+        case n if 50 <= n < 60:
+            return ("C")
+        case n if 40 <= n < 50:
+            return ("D")
+        case n if n < 40:
+            return ("F")
 print(process_students(
     ("Nathan", 72, 81, 68),
+    ("Helena", 82, 53, 71),
+    ("Zuko", 24, 43, 50),
     average=True,
-    grade=True
+    grade=True,
+    lowest=True,
+    highest=False
 ))
+
