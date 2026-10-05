@@ -177,23 +177,25 @@ def process_order(product, price, *extras, discount=0, **customer_details):
 
 # 16 - STUDENT GRADE PROCESSOR
 def process_students(*students, **options):
-    #student_bank = list(i for i in students)
-    functions = {
-        "average": x for x in list(map(lambda x: round(sum(x[1:]) / len(x[1:])), students))
+    for student in students:
+        (name, *scores) = student
+
+    calculations = {
+        "average": lambda x: round(sum(x) / len(x)),
+
     }
 
-    results = {
-        name: func(students[1:][1:])
-        for name, func in functions.items()
-        if options.get(name, False)
+    result = {
+        key: func(scores)
+        for key, func in calculations.items()
+        if options.get(key, False)
     }
-    """if not results:
-        return "No available grade information available."""
-    return "\n".join(f"{k}: {v}" for k, v in results)
 
+    return "\n".join(f"{name}\n{k}: {v}" for k, v in result.items())
+
+#def get_grade()
 print(process_students(
     ("Nathan", 72, 81, 68),
-    ("Sarah", 91, 84, 88),
     average=True,
     grade=True
 ))
