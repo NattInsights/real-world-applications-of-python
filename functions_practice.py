@@ -225,24 +225,28 @@ def get_grade(score):
 
 # 17 - TRANSACTION ANALYSER
 def analyse_transactions(transactions, **options):
-    amounts = list()
-    categories = list()
-    result = ""
+    amounts = []
+    categories = []
     for transaction in transactions:
-        [category, amount] = transaction.values()
+        category = transaction["category"]
+        amount = transaction["amount"]
 
-        amounts.append(amount)
         categories.append(category)
+        amounts.append(amount)
+
+    category_totals = {}
+    for category, amount in zip(categories, amounts):
+            category_totals[category] = category_totals.get(category, 0) + amount
 
     calculations = {
-        "total": sum(amounts),
-        "average": round(sum(amounts)/len(amounts)),
-        "category_totals": lambda x: x,   
-        "largest": max(amounts)
+        "total": lambda: sum(amounts),
+        "average": lambda: round(sum(amounts)/len(amounts)),
+        "category_totals": lambda: category_totals,   
+        "largest": lambda: max(amounts)
     }
 
     result = {
-        name: func(transaction.items())
+        name: func()
         for name, func in calculations.items()
         if options.get(name, False)
     }
