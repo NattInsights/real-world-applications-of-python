@@ -18,4 +18,5 @@ for word in words:
 top_5_common = sorted(top_common_words.items(), key=lambda item: item[1], reverse=True)
 top_5_common = top_5_common[:5]
 
-print(top_5_common)
+final_output = f"Word count: {word_count}\n" + f"Unique words: {unique_words}\n" + f"Top 5 common words: {[x[0] for x in top_5_common]}"
+print(final_output)
