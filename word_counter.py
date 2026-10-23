@@ -14,9 +14,10 @@ for word in words:
     else:
         top_common_words.update({word: 1})
 
-# sorting
+# sorting in descending order and selecting top 5
 top_5_common = sorted(top_common_words.items(), key=lambda item: item[1], reverse=True)
 top_5_common = top_5_common[:5]
 
 final_output = f"Word count: {word_count}\n" + f"Unique words: {unique_words}\n" + f"Top 5 common words: {[x[0] for x in top_5_common]}"
 print(final_output)
+# OUTPUT CAN BE CLEANER, REMOVE TYPE INCLUSION
