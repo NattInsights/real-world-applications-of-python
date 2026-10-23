@@ -1,4 +1,7 @@
+import re
 paragraph = input("Enter your paragraph: ")
 
-total_words = len(paragraph.strip())
-print(total_words)
+word_count = len(paragraph.split())
+unique_words = {word for word in re.split(r'[\s.,!?;:]+', paragraph.lower().strip()) if word}
+top_common_words = [word for word in re.split(r'[\s.,!?;:]+', paragraph.lower().strip()) if word]
+print(unique_words)
