@@ -12,7 +12,7 @@ if user not in users:
     print("User not found!")
 else:
     pin_check = int(input("Enter your pin: "))
-    remaining_attempts = 3
+    remaining_attempts = 2
     while remaining_attempts > 0:
         if pin_check != users[user]:
             print(f"Wrong pin, please try again\n {remaining_attempts} attempts left.")
@@ -21,4 +21,5 @@ else:
         elif pin_check == users[user]:
             print(f"Welcome to your account {user}!!")
             break
-        print("Account is now locked")
+if remaining_attempts == 0:
+    print("Account is now locked")
