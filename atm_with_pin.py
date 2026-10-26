@@ -22,4 +22,8 @@ else:
             print(f"Welcome to your account {user}!!")
             break
 if remaining_attempts == 0:
-    print("Account is now locked")
+    print("Account is now locked.")
+# how can i implement a transaction history?
+# change to a list of dictionaries?? then implement name: key, transaction: history.. per name
+# name and pin always stored in the first dict
+# transaction history stored in the second item as value, key is just transaction title
