@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 paragraph = input("Enter your paragraph: ")
 
 word_count = len(paragraph.split())
@@ -20,5 +21,10 @@ top_5_common = sorted(top_common_words.items(), key=lambda item: item[1], revers
 unique_words_str = ", ".join(sorted(unique_words))
 top_5_str = ", ".join(x[0] for x in top_5_common)
 final_output = f"Word count: {word_count}\n" + f"Unique words: {unique_words_str}\n" + f"Top 5 common words: {top_5_str}"
-print(final_output)
+#print(final_output)
 # numbering left for top 5 in final output..
+
+word_counts = Counter(paragraph.lower().split())
+
+for word, count in word_counts.most_common(3):
+ print(word, count)
