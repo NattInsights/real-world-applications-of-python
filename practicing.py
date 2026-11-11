@@ -9,6 +9,7 @@ name, age = ("Nathaniel", 25)
 #print(name, age)
 #print(minimum, maximum, total)
 
+
 # SORT BY A TUPLE
 
 scores = [
@@ -20,4 +21,17 @@ scores = [
 
 sort_by_score = sorted(scores, key=lambda x: x[1], reverse=True)
 
-print(sort_by_score)
+#print(sort_by_score)
+
+
+# DEFAULTDICT COUNTING
+
+word = "banana"
+
+wc = {}
+
+for letter in word:
+    previous_count = wc.get(letter, 0)
+    wc[letter] = previous_count + 1
+
+print(wc)
