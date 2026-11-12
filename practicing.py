@@ -35,7 +35,7 @@ wc = defaultdict(int)
 for letter in word:
     wc[letter] += 1
 
-print(wc)
+#print(wc)
 """
 wc = {}
 
@@ -44,6 +44,19 @@ for letter in word:
     wc[letter] = previous_count + 1
 
 print(wc)
+"""
+
+
+# GENERATOR VS LIST COMPREHENSION
+
+squares_list = [x ** 2 for x in range(10)]
+
+squares_gen = (x ** 2 for x in range(10))
+
+"""print(squares_list)
+print(squares_gen) # object is created
+# in order to access we can
+print(list(squares_gen))
 """
 
 
