@@ -25,9 +25,18 @@ sort_by_score = sorted(scores, key=lambda x: x[1], reverse=True)
 
 
 # DEFAULTDICT COUNTING
+from collections import defaultdict
 
 word = "banana"
 
+wc = defaultdict(int)
+
+# defaultdict method, much easier than the other method below
+for letter in word:
+    wc[letter] += 1
+
+print(wc)
+"""
 wc = {}
 
 for letter in word:
@@ -35,3 +44,6 @@ for letter in word:
     wc[letter] = previous_count + 1
 
 print(wc)
+"""
+
+
