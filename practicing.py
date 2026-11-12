@@ -53,7 +53,7 @@ squares_list = [x ** 2 for x in range(10)]
 
 squares_gen = (x ** 2 for x in range(10))
 
-print(next(squares_gen))
+"""print(next(squares_gen))
 print(next(squares_gen))
 print(next(squares_gen))
 print(next(squares_gen))
@@ -61,10 +61,32 @@ for i, value in enumerate(squares_gen):
     if i == 3:
         print(value)
         break
-"""print(squares_list)
+print(squares_list)
 print(squares_gen) # object is created
 # in order to access we can
 print(list(squares_gen))
 """
 
 
+# FRIEND RECOMMENDATION PROBLEM
+
+friendships = {
+    0: [1, 2],
+    1: [0, 2, 3],
+    2: [0, 1, 3],
+    3: [1, 2]
+}
+
+def foaf(user_id):
+    direct_friends = friendships[user_id]
+
+    foaf_list = [
+        person
+        for friend in direct_friends
+        for person in friendships[friend]
+        if person != user_id and person not in direct_friends
+    ]
+
+    return foaf_list
+
+print(foaf(0))
