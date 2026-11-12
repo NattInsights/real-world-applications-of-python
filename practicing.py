@@ -53,6 +53,14 @@ squares_list = [x ** 2 for x in range(10)]
 
 squares_gen = (x ** 2 for x in range(10))
 
+print(next(squares_gen))
+print(next(squares_gen))
+print(next(squares_gen))
+print(next(squares_gen))
+for i, value in enumerate(squares_gen):
+    if i == 3:
+        print(value)
+        break
 """print(squares_list)
 print(squares_gen) # object is created
 # in order to access we can
