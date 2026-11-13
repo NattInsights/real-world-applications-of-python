@@ -89,4 +89,28 @@ def foaf(user_id):
 
     return foaf_list
 
-print(foaf(0))
+#print(foaf(0))
+
+
+# EXPERIMENTING WITH RANDOM
+import random
+
+data = list(range(10))
+random.seed(20, 3)
+
+print(random.choice(data))
+print(random.choice(data))
+print(random.choice(data))
+
+print(random.choice(data))
+print(random.choice(data))
+print(random.choice(data))
+
+
+# convention for 
+"""print(random.random())
+print(random.random())
+print(random.random())
+print(random.random())"""
+
+
