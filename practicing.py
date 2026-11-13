@@ -96,19 +96,25 @@ def foaf(user_id):
 import random
 
 data = list(range(10))
-random.seed(20, 3)
+random.seed(10)
 
+"""print(random.choice(data))
 print(random.choice(data))
-print(random.choice(data))
-print(random.choice(data))
+print(random.choice(data))"""
 
-print(random.choice(data))
-print(random.choice(data))
-print(random.choice(data))
+print(random.randint(1, 20))
+print(random.randint(1, 20))
+print(random.randint(1, 20))
+print(random.randint(1, 20))
 
+""" pseudorandom literally means:
+
+"Looks random, but is secretly following a predictable pattern."
+
+-- pseudorandom number generator (PRNG)
 
 # convention for 
-"""print(random.random())
+print(random.random())
 print(random.random())
 print(random.random())
 print(random.random())"""
