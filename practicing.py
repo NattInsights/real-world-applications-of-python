@@ -135,11 +135,17 @@ from itertools import zip_longest
 letters = ["a", "b", "c", "d"]
 numbers = [1, 2]
 
-print(list(zip(letters, numbers)))
+#print(list(zip(letters, numbers)))
 
 all_zipped = list(zip_longest(letters, numbers))
 fill_zipped = list(zip_longest(letters, numbers, fillvalue="N/A"))
 # fillvalue can be used to replace items, default is None in zip_longest
 
-print(all_zipped)
-print(fill_zipped)
+#print(all_zipped)
+#print(fill_zipped)
+
+# GENERATOR EXPRESSIONS
+
+squares = (x**2 for x in range(1, 6))
+print(next(squares))
+print(next(squares))
