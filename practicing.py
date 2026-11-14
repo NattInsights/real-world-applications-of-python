@@ -147,5 +147,17 @@ fill_zipped = list(zip_longest(letters, numbers, fillvalue="N/A"))
 # GENERATOR EXPRESSIONS
 
 squares = (x**2 for x in range(1, 6))
-print(next(squares))
-print(next(squares))
+#print(next(squares))
+#print(next(squares))
+
+
+# DICTIONARY ITERATION
+
+person = {
+    "name": "Nathaniel",
+    "age": 25,
+    "country": "UK"
+}
+
+for x in person: # default is key, same as person.keys()
+    print(x)
