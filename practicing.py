@@ -93,19 +93,19 @@ def foaf(user_id):
 
 
 # EXPERIMENTING WITH RANDOM
-import random
+"""import random
 
 data = list(range(10))
 random.seed(10)
 
-"""print(random.choice(data))
 print(random.choice(data))
-print(random.choice(data))"""
+print(random.choice(data))
+print(random.choice(data))
 
 print(random.randint(1, 20))
 print(random.randint(1, 20))
 print(random.randint(1, 20))
-print(random.randint(1, 20))
+print(random.randint(1, 20))"""
 
 """ pseudorandom literally means:
 
@@ -120,3 +120,26 @@ print(random.random())
 print(random.random())"""
 
 
+# ZIP + DICTIONARIES
+
+names = ["Alice", "Bob", "Charlie"]
+ages = [21, 24, 19]
+
+new_dict = dict(zip(names, ages))
+#print(new_dict)
+
+# ZIP + UNEQUAL LENGTHS
+
+from itertools import zip_longest
+
+letters = ["a", "b", "c", "d"]
+numbers = [1, 2]
+
+print(list(zip(letters, numbers)))
+
+all_zipped = list(zip_longest(letters, numbers))
+fill_zipped = list(zip_longest(letters, numbers, fillvalue="N/A"))
+# fillvalue can be used to replace items, default is None in zip_longest
+
+print(all_zipped)
+print(fill_zipped)
